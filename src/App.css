@@ -1,8 +1,9 @@
 .container {
-   width: 900px;
-   margin: 40px auto;
+  width: min(900px, calc(100% - 32px));
+  margin: 40px auto;
   padding: 40px;
   font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -13,20 +14,15 @@ h2 {
   margin-top: 40px;
 }
 
-.chart-box {
-  height: 400px;
-  margin-top: 30px;
-  border: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-}
-
 p {
   margin-top: 20px;
   color: #777;
 }
+
+
+/* =========================
+   그래프
+   ========================= */
 
 .chart-container {
   position: relative;
@@ -39,6 +35,11 @@ p {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 }
 
+
+/* =========================
+   현재 시세
+   ========================= */
+
 .price-header {
   display: flex;
   justify-content: space-between;
@@ -47,7 +48,7 @@ p {
 }
 
 .price-label {
-  margin: 0 0 8px;
+  margin: 0 0 3px;
   font-size: 16px;
   color: #777777;
 }
@@ -60,7 +61,7 @@ p {
 }
 
 .price-change {
-  margin: 0 0 6px;
+  margin: 0;
   font-size: 16px;
   font-weight: 600;
 }
@@ -73,6 +74,26 @@ p {
   color: #1a73e8;
 }
 
+.price-change.same {
+  color: #777777;
+}
+
+.price-header > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.price-header > div:last-child .price-label {
+  margin: 0;
+  line-height: 1.1;
+}
+
+.price-header > div:last-child .price-change {
+  margin: 0;
+  line-height: 1.1;
+}
+
 .update-time {
   margin-top: 12px;
   text-align: right;
@@ -80,6 +101,320 @@ p {
   color: #999999;
 }
 
-.price-change.same {
+
+/* =========================
+   내가살때 / 내가팔때
+   ========================= */
+
+.type-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.type-buttons button {
+  padding: 9px 18px;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+}
+
+.type-buttons button.active {
+  background: #111111;
+  color: white;
+  border-color: #111111;
+}
+
+
+/* =========================
+   금 매도가격 계산기
+   ========================= */
+
+.gold-calculator {
+  margin-top: 42px;
+  padding: 28px;
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.gold-calculator h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.calculator-description {
+  margin: 6px 0 24px;
+  font-size: 14px;
+  color: #999999;
+}
+
+
+/* =========================
+   중량 직접 입력
+   ========================= */
+
+.weight-input-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+.weight-input-row label {
+  width: 100%;
+  text-align: right;
+  padding-right: 2px;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.weight-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weight-input-wrap input {
+  width: 180px;
+  padding: 12px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: right;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.weight-input-wrap input:focus {
+  border-color: #111111;
+}
+
+.weight-input-wrap span {
+  font-size: 16px;
+  color: #555555;
+}
+
+
+/* =========================
+   빠른 중량 선택
+   ========================= */
+
+.quick-weight-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.quick-weight-buttons button {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 6px 7px;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  background: #ffffff;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-weight-buttons button:hover {
+  border-color: #111111;
+}
+
+.weight-gram {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111111;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.weight-don {
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #999999;
+  line-height: 1.2;
+  text-align: center;
+}
+
+
+/* =========================
+   현재시세 / 직전시세
+   ========================= */
+
+.calculator-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.calculator-buttons button {
+  padding: 9px 18px;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.calculator-buttons button.active {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+
+/* =========================
+   계산 결과
+   ========================= */
+
+.calculator-price-label {
+  margin: 28px 0 4px;
+  font-size: 14px;
   color: #777777;
+}
+
+.calculator-result {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #111111;
+}
+
+.calculator-difference {
+  margin: 10px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.calculator-difference.up {
+  color: #d93025;
+}
+
+.calculator-difference.down {
+  color: #1a73e8;
+}
+
+.calculator-difference.same {
+  color: #777777;
+}
+
+.calculator-empty {
+  margin: 28px 0 0;
+  font-size: 15px;
+  color: #999999;
+}
+
+.calculator-notice {
+  margin: 24px 0 0;
+  font-size: 12px;
+  color: #999999;
+}
+
+
+/* =========================
+   모바일 화면 최적화
+   ========================= */
+
+@media (max-width: 768px) {
+  .container {
+    width: auto;
+    margin: 0;
+    padding: 20px 16px;
+  }
+
+  h1 {
+    font-size: 21px;
+    line-height: 1.3;
+  }
+
+  .type-buttons {
+    margin-top: 18px;
+  }
+
+  .price-header {
+    margin-top: 24px;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  .current-price {
+    font-size: 30px;
+    white-space: nowrap;
+  }
+
+  .price-label {
+    font-size: 14px;
+  }
+
+  .price-change {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .chart-container {
+    height: 250px;
+    margin-top: 22px;
+    padding: 10px;
+  }
+
+  .update-time {
+    font-size: 12px;
+  }
+
+  .gold-calculator {
+    margin-top: 28px;
+    padding: 18px;
+  }
+
+  .gold-calculator h2 {
+    font-size: 20px;
+  }
+
+  .calculator-description {
+    margin: 4px 0 18px;
+  }
+
+  .weight-input-row {
+    padding-right: 8px;
+  }
+
+  .weight-input-row label {
+    padding-right: 22px;
+  }
+
+  .weight-input-wrap input {
+    width: 180px;
+    max-width: 100%;
+  }
+
+  .quick-weight-buttons {
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .quick-weight-buttons button {
+    padding: 9px 3px 7px;
+  }
+
+  .weight-gram {
+    font-size: 13px;
+  }
+
+  .weight-don {
+    font-size: 10px;
+  }
+
+  .calculator-result {
+    font-size: 30px;
+  }
 }
